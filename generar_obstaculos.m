@@ -1,4 +1,4 @@
-function contenedor_posiciones = generar_obstaculos()
+function [contenedor_posiciones, y_sup] = generar_obstaculos()
     % Inicializar la figura
     figure;
     hold on;
@@ -74,4 +74,7 @@ function contenedor_posiciones = generar_obstaculos()
         % Almacena las posiciones de la fila
         contenedor_posiciones{fila} = posiciones_fila;
     end
+    posiciones = vertcat(contenedor_posiciones{:});
+    coef_seguridad = 5;
+    y_sup = max(posiciones(:, 2)) + coef_seguridad;
 end
