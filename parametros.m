@@ -3,10 +3,10 @@
 % ||================================||
 % || Parámetros del Sistema Físico  ||
 % ||================================||
-Y_t0 = 45;                       %[m]------------------------* Altura poleas suspension izaje *  
+Y_t0 = 20;                       %[m]------------------------* Altura poleas suspension izaje *  
 H_c = 2.5;                       %[m]------------------------* Ancho y alto de container est  *
 M_s = 15000;                     %[Kg]-----------------------*   Masa spreader + headnlock    *
-M_c_MAX = 50000;                 %[Kg]-----------------------* Masa nominal containers a izar *
+M_c_MAX = 50000 + M_s;           %[Kg]-----------------------* Masa nominal containers a izar *
 M_c_MIN = 2000;                  %[Kg]-----------------------*   Masa container vacio a izar  *
 g = 9.80665;                     %[m/s2]---------------------*    Aceleracion gravitatoria    *
 
@@ -160,17 +160,35 @@ K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]---------------
 %||================================||
 %||     Condiciones iniciales      ||
 %||================================||
-xt_inicial = 47.0615;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
-yl_inicial = -14.85;                %   3.00;     22.70;     -15+hc_x*1.1  ;    2.55000
+xt_inicial = 0;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
+yl_inicial = 0;
 lh_inicial = 45-yl_inicial;
 pos_inicial=[xt_inicial, yl_inicial];
 
 
 %FILTRO JOYSTICK
-f=0.1;                          
+f=0.1;     
 
-% Condiciones Iniciales
-xt_inicial = -20;
-yl_inicial = 39;
-lh_inicial = 45-yl_inicial;
-pos_inicial=[xt_inicial, yl_inicial];
+
+%_________COSAS NO NUESTRAS, SOLO PARA COMPARAR
+Matriz_Contenedores =[8 8 6 16 11 8 6 16 11 8 9 10 1];
+Matriz_Muelle =[1 0 0];
+hc_x=2.5;       %Ancho container
+hc_y=2.5;       %Alto container
+long_barco = 50; % Longitud total del barco en metros
+ancho_pared = 1.1; %Pared de barco en metros
+ancho_sb=ancho_pared/5;
+long_puerto=25; % Longitud total útil del puerto en metros
+cs=hc_x/5 ; % Coeficiente de seguridad que considera el ancho seguro de movimiento 
+y_ref=-20;      % alturas del interior del barco respecto al muelle en metros
+
+% Fines de carrera
+max_x_t=49;
+min_x_t=-29;
+max_y=-19;
+min_y=39;
+
+i_h = 22;
+i_t = 30;
+J_tmtb=7.0;    % [kg*m^2] Momento de inercia equivalente del eje rápido (motor, disco de freno de operación y etapa de entrada de caja reductora)
+
