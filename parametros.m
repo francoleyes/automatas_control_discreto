@@ -3,7 +3,7 @@
 % ||================================||
 % || Parámetros del Sistema Físico  ||
 % ||================================||
-Y_t0 = 20;                       %[m]------------------------* Altura poleas suspension izaje *  
+Y_t0 = 45;                       %[m]------------------------* Altura poleas suspension izaje *  
 H_c = 2.5;                       %[m]------------------------* Ancho y alto de container est  *
 M_s = 15000;                     %[Kg]-----------------------*   Masa spreader + headnlock    *
 M_c_MAX = 50000 + M_s;           %[Kg]-----------------------* Masa nominal containers a izar *
@@ -138,7 +138,7 @@ b_ha = b_eqh/r_h - n_h*w_posh*(J_eqh + 0.5*m_l_*r_hd)/r_h;     %[ ]-------------
 K_hsa = -n_h*(w_posh^2)*(J_eqh + 0.5*m_l_*r_hd)/r_t;           %[ ]----------------------*  Ganancia Proporcional  *
 K_hsia = -(w_posh^3)*(J_eqh + 0.5*m_l_*r_hd)/r_t;             %[ ]----------------------*    Ganancia Integral    *
 
-
+b_ha = -2.2610e+04;
 %||================================||
 %||      Controlador de carro      ||
 %||
@@ -160,8 +160,8 @@ K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]---------------
 %||================================||
 %||     Condiciones iniciales      ||
 %||================================||
-xt_inicial = 0;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
-yl_inicial = 0;
+xt_inicial = -10;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
+yl_inicial = 10;
 lh_inicial = 45-yl_inicial;
 pos_inicial=[xt_inicial, yl_inicial];
 
@@ -191,4 +191,3 @@ min_y=39;
 i_h = 22;
 i_t = 30;
 J_tmtb=7.0;    % [kg*m^2] Momento de inercia equivalente del eje rápido (motor, disco de freno de operación y etapa de entrada de caja reductora)
-
