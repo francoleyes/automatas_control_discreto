@@ -12,7 +12,7 @@ g = 9.80665;                     %[m/s2]---------------------*    Aceleracion gr
 
 M_real = 40000;
 
-TensionMinima=M_c_MIN*2/g;       %[N]------------------------*    Umbral de tensión mínima    *
+TensionMinima=(M_s*g/2)*0.7;           %[N]------------------------*    Umbral de tensión mínima    *
 
 % ||================================||
 % ||        Variables Izaje         ||
@@ -71,8 +71,8 @@ b_td = 1.8;                       %[N.m.s/rad]---------------*  Coef fricc visco
 b_tm = 6;                         %[N.m.s/rad]---------------*  Coef fric viscosa eje rapido  *
 b_tb = 5*10^6;                    %[N.m.s/rad]---------------* Coef fric visc Freno operacion *
 
-T_tm_MAX = 3*10^3;                %[N.m]---------------------*    T max motorizacion/FrenR    *
-T_tb_MAX = 5*10^3;                %[N.m]---------------------*    T max freno de operacion    *
+T_tm_MAX = 3*10^4;                %[N.m]---------------------*    T max motorizacion/FrenR    *
+T_tb_MAX = 5*10^4;                %[N.m]---------------------*    T max freno de operacion    *
 
 tau_tm = 1e-3;                    %[ms]----------------------* Constante tiempo mod de torque *
 
@@ -148,20 +148,19 @@ b_eqt = ((r_t/r_td)^2)*b_tm + b_td/(r_td^2) + b_t;           %[ ]---------------
 
 coef_t = [r_td*(J_eqt)/r_t; r_td*(b_eqt)/r_t; 0];
 polos_t = roots(coef_t);
-w_post = -10*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_post = -3*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
-b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t;          %[ ]----------------------*   Ganancia Derivativa   *
-K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t;                        %[ ]----------------------*  Ganancia Proporcional  *
-K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]----------------------*    Ganancia Integral    *
-
+b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t          %[ ]----------------------*   Ganancia Derivativa   *
+K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t                        %[ ]----------------------*  Ganancia Proporcional  *
+K_tsia = (w_post^3)*J_eqt*r_td/r_t                          %[ ]----------------------*    Ganancia Integral    *
 
 %||================================||
 %||     Condiciones iniciales      ||
 %||================================||
-xt_inicial = -10;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
-yl_inicial = 10;
+xt_inicial = 50.5;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
+yl_inicial = 10.5;
 lh_inicial = 45-yl_inicial;
 pos_inicial=[xt_inicial, yl_inicial];
 
