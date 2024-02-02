@@ -152,9 +152,9 @@ w_post = -3*polos_t(2);         %[rad/s]------------------* Frecuencia calcular 
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
-b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t          %[ ]----------------------*   Ganancia Derivativa   *
-K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t                        %[ ]----------------------*  Ganancia Proporcional  *
-K_tsia = (w_post^3)*J_eqt*r_td/r_t                          %[ ]----------------------*    Ganancia Integral    *
+b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t;         %[ ]----------------------*   Ganancia Derivativa   *
+K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t;                       %[ ]----------------------*  Ganancia Proporcional  *
+K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]----------------------*    Ganancia Integral    *
 
 %||================================||
 %||     Condiciones iniciales      ||
