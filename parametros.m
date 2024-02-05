@@ -10,7 +10,7 @@ M_c_MAX = 50000 + M_s;           %[Kg]-----------------------* Masa nominal cont
 M_c_MIN = 2000;                  %[Kg]-----------------------*   Masa container vacio a izar  *
 g = 9.80665;                     %[m/s2]---------------------*    Aceleracion gravitatoria    *
 
-M_real = 40000;
+M_real = 10000;
 
 TensionMinima=(M_s*g/2)*0.7;           %[N]------------------------*    Umbral de tensión mínima    *
 
@@ -159,11 +159,10 @@ K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]---------------
 %||================================||
 %||     Condiciones iniciales      ||
 %||================================||
-xt_inicial = 50.5;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
-yl_inicial = 10.5;
+xt_inicial = -10;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
+yl_inicial = 15;
 lh_inicial = 45-yl_inicial;
 pos_inicial=[xt_inicial, yl_inicial];
-
 
 %FILTRO JOYSTICK
 f=0.1;     
@@ -180,6 +179,8 @@ ancho_sb=ancho_pared/5;
 long_puerto=25; % Longitud total útil del puerto en metros
 cs=hc_x/5 ; % Coeficiente de seguridad que considera el ancho seguro de movimiento 
 y_ref=-20;      % alturas del interior del barco respecto al muelle en metros
+Delta_F_hw=20;  %  Umbral de estabilidad
+
 
 % Fines de carrera
 max_x_t=49;
