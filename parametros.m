@@ -29,8 +29,8 @@ b_hb = 1*10^8;                    %[N.m.s/rad]---------------* Coef fric visc Fr
 b_hEb = 2.2*10^9;                 %[N.m.s/rad]---------------* Coef fric visc Fren emergencia *
 
 T_hEb_MAX = 1.1*10^6;             %[N.m]---------------------* Torque max freno de emergencia *
-T_hb_MAX = 5*10^4;                %[N.m]---------------------*    T max freno de operacion    *
-T_hm_MAX = 2*10^4;                %[N.m]---------------------*    T max motorizacion/FrenR    *
+T_hb_MAX = 5*10^5;                %[N.m]---------------------*    T max freno de operacion    *
+T_hm_MAX = 2*10^5;                %[N.m]---------------------*    T max motorizacion/FrenR    *
 
 tau_hm = 1e-3;                    %[ms]----------------------* Constante tiempo mod de torque *
 
@@ -138,7 +138,6 @@ b_ha = b_eqh/r_h - n_h*w_posh*(J_eqh + 0.5*m_l_*r_hd)/r_h;     %[ ]-------------
 K_hsa = -n_h*(w_posh^2)*(J_eqh + 0.5*m_l_*r_hd)/r_t;           %[ ]----------------------*  Ganancia Proporcional  *
 K_hsia = -(w_posh^3)*(J_eqh + 0.5*m_l_*r_hd)/r_t;             %[ ]----------------------*    Ganancia Integral    *
 
-b_ha = -2.2610e+04;
 %||================================||
 %||      Controlador de carro      ||
 %||
