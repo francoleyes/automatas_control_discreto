@@ -166,6 +166,7 @@ pos_inicial=[xt_inicial, yl_inicial];
 %FILTRO JOYSTICK
 f=0.1;     
 
+dt=5e-3;
 
 %_________COSAS NO NUESTRAS, SOLO PARA COMPARAR
 Matriz_Contenedores =[8 8 6 16 11 8 6 16 11 8 9 10 1];
