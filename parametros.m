@@ -147,13 +147,18 @@ b_eqt = ((r_t/r_td)^2)*b_tm + b_td/(r_td^2) + b_t;           %[ ]---------------
 
 coef_t = [r_td*(J_eqt)/r_t; r_td*(b_eqt)/r_t; 0];
 polos_t = roots(coef_t);
-w_post = -3*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_post = -10*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
-b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t;         %[ ]----------------------*   Ganancia Derivativa   *
-K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t;                       %[ ]----------------------*  Ganancia Proporcional  *
-K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]----------------------*    Ganancia Integral    *
+b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t         %[ ]----------------------*   Ganancia Derivativa   *
+K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t                       %[ ]----------------------*  Ganancia Proporcional  *
+K_tsia = (w_post^3)*J_eqt*r_td/r_t                          %[ ]----------------------*    Ganancia Integral    *
+%K_tsia=2*1.6091e+03;
+%K_tsa=4.2642e+03;
+%b_ta=4.8819e+03;
+
+
 
 %||================================||
 %||     Condiciones iniciales      ||
