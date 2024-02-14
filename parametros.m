@@ -12,7 +12,7 @@ g = 9.80665;                     %[m/s2]---------------------*    Aceleracion gr
 
 M_real = 10000;
 
-TensionMinima=(M_s*g/2)*0.7;           %[N]------------------------*    Umbral de tensión mínima    *
+TensionMinima=(M_s*g/2)*0.9;           %[N]------------------------*    Umbral de tensión mínima    *
 
 % ||================================||
 % ||        Variables Izaje         ||
@@ -130,7 +130,7 @@ m_l_ = M_s + M_real;             %[Kg]---------------------* Masa para calcular 
 coef_h = [(-1/r_h)*(J_eqh+m_l_*r_hd/2); (-1/r_h)*b_eqh; 0];
 polos_h = roots(coef_h);
 
-w_posh = -10*polos_h(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_posh = -6*polos_h(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_h = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
@@ -147,13 +147,13 @@ b_eqt = ((r_t/r_td)^2)*b_tm + b_td/(r_td^2) + b_t;           %[ ]---------------
 
 coef_t = [r_td*(J_eqt)/r_t; r_td*(b_eqt)/r_t; 0];
 polos_t = roots(coef_t);
-w_post = -10*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_post = -7*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
-b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t         %[ ]----------------------*   Ganancia Derivativa   *
-K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t                       %[ ]----------------------*  Ganancia Proporcional  *
-K_tsia = (w_post^3)*J_eqt*r_td/r_t                          %[ ]----------------------*    Ganancia Integral    *
+b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t;         %[ ]----------------------*   Ganancia Derivativa   *
+K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t;                       %[ ]----------------------*  Ganancia Proporcional  *
+K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]----------------------*    Ganancia Integral    *
 %K_tsia=2*1.6091e+03;
 %K_tsa=4.2642e+03;
 %b_ta=4.8819e+03;
@@ -163,8 +163,8 @@ K_tsia = (w_post^3)*J_eqt*r_td/r_t                          %[ ]----------------
 %||================================||
 %||     Condiciones iniciales      ||
 %||================================||
-xt_inicial = -10;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
-yl_inicial = 15;
+xt_inicial = 45.75;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
+yl_inicial = 25;
 lh_inicial = 45-yl_inicial;
 pos_inicial=[xt_inicial, yl_inicial];
 
@@ -196,3 +196,4 @@ min_y=39;
 i_h = 22;
 i_t = 30;
 J_tmtb=7.0;    % [kg*m^2] Momento de inercia equivalente del eje rápido (motor, disco de freno de operación y etapa de entrada de caja reductora)
+% 
