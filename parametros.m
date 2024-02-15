@@ -130,7 +130,7 @@ m_l_ = M_s + M_real;             %[Kg]---------------------* Masa para calcular 
 coef_h = [(-1/r_h)*(J_eqh+m_l_*r_hd/2); (-1/r_h)*b_eqh; 0];
 polos_h = roots(coef_h);
 
-w_posh = -6*polos_h(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_posh = -7*polos_h(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_h = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
@@ -147,7 +147,7 @@ b_eqt = ((r_t/r_td)^2)*b_tm + b_td/(r_td^2) + b_t;           %[ ]---------------
 
 coef_t = [r_td*(J_eqt)/r_t; r_td*(b_eqt)/r_t; 0];
 polos_t = roots(coef_t);
-w_post = -8*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_post = -7*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
