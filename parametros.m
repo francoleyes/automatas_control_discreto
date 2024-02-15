@@ -33,7 +33,7 @@ T_hb_MAX = 5*10^4;                %[N.m]---------------------*    T max freno de
 T_hm_MAX = 2*10^4;                %[N.m]---------------------*    T max motorizacion/FrenR    *
 
 tau_hm = 1e-3;                    %[ms]----------------------* Constante tiempo mod de torque *
-tau_hm =1.0e-2
+tau_hm =1.0e-2;
 J_eqh = 2*(J_hd_hEb+J_hm_hb*(r_h^2))/r_hd; %-----------------* Momento de inercia equivalente *
 b_eqh = 2*(b_hd+b_hm*(r_h^2))/r_hd;        %-----------------*  Friccion viscosa equivalente  *
 
@@ -75,7 +75,7 @@ T_tm_MAX = 3*10^3;                %[N.m]---------------------*    T max motoriza
 T_tb_MAX = 5*10^3;                %[N.m]---------------------*    T max freno de operacion    *
 
 tau_tm = 1e-3;                    %[ms]----------------------* Constante tiempo mod de torque *
-tau_tm =1.0e-2
+tau_tm =1.0e-2;
 J_eq = (J_td+J_tm_tb*(r_t^2))/r_td; %----------* Momento de inercia equivalente *
 b_eq = (b_td+b_tm*(r_t^2))/r_td;    %----------*  Friccion viscosa equivalente  *
 
