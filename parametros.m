@@ -12,7 +12,7 @@ g = 9.80665;                     %[m/s2]---------------------*    Aceleracion gr
 
 M_real = 10000;
 
-TensionMinima=(M_s*g/2)*0.9;           %[N]------------------------*    Umbral de tensión mínima    *
+TensionMinima=(M_s*g/2)*0.5;           %[N]------------------------*    Umbral de tensión mínima    *
 
 % ||================================||
 % ||        Variables Izaje         ||
@@ -29,11 +29,11 @@ b_hb = 1*10^8;                    %[N.m.s/rad]---------------* Coef fric visc Fr
 b_hEb = 2.2*10^9;                 %[N.m.s/rad]---------------* Coef fric visc Fren emergencia *
 
 T_hEb_MAX = 1.1*10^6;             %[N.m]---------------------* Torque max freno de emergencia *
-T_hb_MAX = 5*10^5;                %[N.m]---------------------*    T max freno de operacion    *
-T_hm_MAX = 2*10^5;                %[N.m]---------------------*    T max motorizacion/FrenR    *
+T_hb_MAX = 5*10^4;                %[N.m]---------------------*    T max freno de operacion    *
+T_hm_MAX = 2*10^4;                %[N.m]---------------------*    T max motorizacion/FrenR    *
 
 tau_hm = 1e-3;                    %[ms]----------------------* Constante tiempo mod de torque *
-
+tau_hm =1.0e-2
 J_eqh = 2*(J_hd_hEb+J_hm_hb*(r_h^2))/r_hd; %-----------------* Momento de inercia equivalente *
 b_eqh = 2*(b_hd+b_hm*(r_h^2))/r_hd;        %-----------------*  Friccion viscosa equivalente  *
 
@@ -71,11 +71,11 @@ b_td = 1.8;                       %[N.m.s/rad]---------------*  Coef fricc visco
 b_tm = 6;                         %[N.m.s/rad]---------------*  Coef fric viscosa eje rapido  *
 b_tb = 5*10^6;                    %[N.m.s/rad]---------------* Coef fric visc Freno operacion *
 
-T_tm_MAX = 3*10^4;                %[N.m]---------------------*    T max motorizacion/FrenR    *
-T_tb_MAX = 5*10^4;                %[N.m]---------------------*    T max freno de operacion    *
+T_tm_MAX = 3*10^3;                %[N.m]---------------------*    T max motorizacion/FrenR    *
+T_tb_MAX = 5*10^3;                %[N.m]---------------------*    T max freno de operacion    *
 
 tau_tm = 1e-3;                    %[ms]----------------------* Constante tiempo mod de torque *
-
+tau_tm =1.0e-2
 J_eq = (J_td+J_tm_tb*(r_t^2))/r_td; %----------* Momento de inercia equivalente *
 b_eq = (b_td+b_tm*(r_t^2))/r_td;    %----------*  Friccion viscosa equivalente  *
 
@@ -147,16 +147,14 @@ b_eqt = ((r_t/r_td)^2)*b_tm + b_td/(r_td^2) + b_t;           %[ ]---------------
 
 coef_t = [r_td*(J_eqt)/r_t; r_td*(b_eqt)/r_t; 0];
 polos_t = roots(coef_t);
-w_post = -7*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_post = -8*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
 b_ta = n_t*w_post*(r_td*J_eqt/r_t) - r_td*b_eqt/r_t;         %[ ]----------------------*   Ganancia Derivativa   *
 K_tsa = n_t*(w_post^2)*J_eqt*r_td/r_t;                       %[ ]----------------------*  Ganancia Proporcional  *
 K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]----------------------*    Ganancia Integral    *
-%K_tsia=2*1.6091e+03;
-%K_tsa=4.2642e+03;
-%b_ta=4.8819e+03;
+
 
 
 
