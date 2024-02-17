@@ -161,7 +161,7 @@ K_tsia = (w_post^3)*J_eqt*r_td/r_t;                          %[ ]---------------
 %||================================||
 %||     Condiciones iniciales      ||
 %||================================||
-xt_inicial = -15;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
+xt_inicial = -10;               %   41.5;   -10.00;         47.0615    ;           -20.8700    
 yl_inicial = 5;
 lh_inicial = 45-yl_inicial;
 pos_inicial=[xt_inicial, yl_inicial];
