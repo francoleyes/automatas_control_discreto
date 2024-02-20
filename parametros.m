@@ -147,7 +147,7 @@ b_eqt = ((r_t/r_td)^2)*b_tm + b_td/(r_td^2) + b_t;           %[ ]---------------
 
 coef_t = [r_td*(J_eqt)/r_t; r_td*(b_eqt)/r_t; 0];
 polos_t = roots(coef_t);
-w_post = -10*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
+w_post = -20*polos_t(2);         %[rad/s]------------------* Frecuencia calcular las ganancias *
 
 n_t = 3;                         %[ ]----------------------*       Método sintonía serie       *
 
